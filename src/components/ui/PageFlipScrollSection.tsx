@@ -4,8 +4,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence, Transition } from 'framer-motion'
 
-import { Warning } from '../icons/Warning'
-
 interface PageFlipScrollSectionProps {
   children: React.ReactNode[]
   className?: string
@@ -18,7 +16,6 @@ const PageFlipScrollSection = ({
     onSectionComplete
 }: PageFlipScrollSectionProps) => {
     const containerRef = useRef<HTMLDivElement | null>(null)
-    const lastScrollY = useRef(0)
     const scrollTimeout = useRef<NodeJS.Timeout | null>(null)
 
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -33,7 +30,6 @@ const PageFlipScrollSection = ({
 
         e.preventDefault()
 
-        const currentScrollY = window.scrollY
         const direction = e.deltaY > 0 ? 'down' : 'up'
         setScrollDirection(direction)
 

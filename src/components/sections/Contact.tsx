@@ -3,7 +3,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Github, Linkedin, Send, MapPin, Phone, MessageCircle } from 'lucide-react'
+import { Mail, Github, Linkedin, Send, MapPin, MessageCircle } from 'lucide-react'
 
 import { Whatsapp } from '../icons/Whatsapp'
 import SectionReveal from '../ui/SectionReveal'
@@ -78,7 +78,9 @@ const Contact = () => {
         }))
     }
     const handleSubmit = (e: React.FormEvent) => {
-
+        e.preventDefault()
+        setSubmitStatus('idle')
+        setIsSubmitting(true)
     }
 
     return (
@@ -94,14 +96,14 @@ const Contact = () => {
                             className="inline-block"
                         >
                             <h2 className="text-4xl md:text-5xl font-bold text-[var(--terminal-yellow)] mb-4 font-mono">
-                                // ME CONTACTER
+                                -- ME CONTACTER --
                             </h2>
 
                             <div className="w-24 h-1 bg-[var(--terminal-cyan)] mx-auto mb-3"></div>
                         </motion.div>
 
                         <p className="text-xl text-[var(--terminal-text)] max-w-3xl mx-auto leading-relaxed">
-                            Vous avez un projet en tête ? Discutons ensemble de vos besoins et créons quelque chose d'exceptionnel.
+                            Vous avez un projet en tête ? Discutons ensemble de vos besoins et créons quelque chose d&apos;exceptionnel.
                         </p>
                     </div>
                 </SectionReveal>
@@ -212,7 +214,7 @@ const Contact = () => {
                                             className="p-4 bg-[var(--terminal-red)]/20 border border-[var(--terminal-red)]/30 rounded-lg"
                                         >
                                             <div className="text-[var(--terminal-red)] font-mono text-sm">
-                                                ✗ Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement.
+                                                ✗ Erreur lors de l&apos;envoi. Veuillez réessayer ou me contacter directement.
                                             </div>
                                         </motion.div>
                                     )}
@@ -388,7 +390,7 @@ const Contact = () => {
                             
                                 <p className="text-[var(--terminal-text)]">
                                     Je suis actuellement ouvert aux opportunités freelance et aux collaborations. 
-                                    N'hésitez pas à me contacter pour discuter de votre projet !
+                                    N&apos;hésitez pas à me contacter pour discuter de votre projet !
                                 </p>
                             </div>
                         </div>

@@ -1,6 +1,4 @@
 
-import Image from "next/image"
-
 import Hero from "@/components/sections/Hero"
 import Services from "@/components/sections/Services"
 import Projets from "@/components/sections/Projets"

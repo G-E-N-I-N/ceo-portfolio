@@ -3,7 +3,7 @@
 
 
 import { motion } from 'framer-motion'
-import { GitCommit, Calendar, MapPin, Award, Briefcase, GraduationCap } from 'lucide-react'
+import { GitCommit, MapPin, Award, Briefcase, GraduationCap } from 'lucide-react'
 
 import SectionReveal from '../ui/SectionReveal'
 import StaggerContainer, { StaggerItem } from '../ui/StaggerContainer'
@@ -122,7 +122,7 @@ const TimeLines = () => {
                             className="inline-block"
                         >
                             <h2 className="text-4xl md:text-5xl font-bold text-[var(--terminal-red)] mb-4 font-mono">
-                                // MON PARCOURS
+                                -- MON PARCOURS --
                             </h2>
 
                             <div className="w-24 h-1 bg-[var(--terminal-yellow)] mx-auto mb-6"></div>
@@ -153,7 +153,7 @@ const TimeLines = () => {
 
                         <div className="p-6">
                             <div className="mb-4 text-[var(--terminal-green)] font-mono text-sm">
-                                $ git log --pretty=format:"%h %ad %s" --date=short
+                                $ git log --pretty=format:&quot;%h %ad %s&quot; --date=short
                             </div>
 
                             <StaggerContainer className="space-y-6">
@@ -246,7 +246,7 @@ const TimeLines = () => {
 
                                 <div className="text-[var(--terminal-text)] text-sm">
                                     On branch main<br />
-                                    Your branch is up to date with 'origin/main'.<br />
+                                    Your branch is up to date with &apos;origin/main&apos;.<br />
                                     <span className="text-[var(--terminal-green)]">
                                         Ready for new commits and exciting opportunities! 🚀
                                     </span>

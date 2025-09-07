@@ -2,7 +2,6 @@
 'use client'
 
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
 
 import AnimatedText from '../ui/AnimatedText';
 import Terminal from '../ui/Terminal';
@@ -81,9 +80,9 @@ const Hero = () => {
                             className="space-y-4"
                         >
                             <p className="text-lg text-[var(--terminal-text)] leading-relaxed">
-                                Passionné par la création d'expériences numériques, je conçois et développe 
+                                Passionné par la création d&apos;expériences numériques, je conçois et développe 
                                 en <span className="text-[var(--terminal-green)] font-semibold">freelance</span> des
-                                applications web et mobiles robustes, de l'idée initiale à la mise en production.
+                                applications web et mobiles robustes, de l&apos;idée initiale à la mise en production.
                             </p>
 
                             <div className="flex flex-wrap gap-3">
@@ -140,7 +139,7 @@ const Hero = () => {
                             className="mt-4"
                         >
                             <p className="text-[var(--terminal-text)] text-sm text-center">
-                                💡 <span className="text-[var(--terminal-yellow)]">Astuce:</span> Tapez "help" dans le terminal pour découvrir les commandes
+                                💡 <span className="text-[var(--terminal-yellow)]">Astuce:</span> Tapez &quot;help&quot; dans le terminal pour découvrir les commandes
                             </p>
 
                             <Terminal />

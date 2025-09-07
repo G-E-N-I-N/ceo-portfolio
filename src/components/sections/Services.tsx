@@ -1,15 +1,13 @@
 
 'use client'
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Code, Server, Smartphone, Database, ArrowRight } from 'lucide-react';
+import { Code, Server, Smartphone, Database } from 'lucide-react';
 
 import SectionReveal from '../ui/SectionReveal';
 import StaggerContainer, { StaggerItem } from '../ui/StaggerContainer';
 
 const Services = () => {
-    const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
     const services = [
         {
@@ -55,7 +53,7 @@ const Services = () => {
                             className="inline-block"
                         >
                             <h2 className="text-4xl md:text-5xl font-bold text-[var(--terminal-cyan)] mb-4 font-mono">
-                                // MES SERVICES
+                                -- MES SERVICES --
                             </h2>
                             <div className="w-24 h-1 bg-[var(--terminal-green)] mx-auto mb-6"></div>
                         </motion.div>

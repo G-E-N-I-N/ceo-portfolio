@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Terminal as TerminalIcon, Minimize2, Maximize2, X } from 'lucide-react'
+import { Terminal as TerminalIcon } from 'lucide-react'
 
 interface TerminalLine {
     id: number
@@ -14,7 +14,6 @@ interface TerminalLine {
 const Terminal = () => {
     const [lines, setLines] = useState<TerminalLine[]>([])
     const [currentInput, setCurrentInput] = useState('')
-    const [isBooting, setIsBooting] = useState(true)
     const [showPrompt, setShowPrompt] = useState(false)
     const inputRef = useRef<HTMLInputElement>(null)
     const terminalRef = useRef<HTMLDivElement>(null)
@@ -157,7 +156,6 @@ const Terminal = () => {
             setTimeout(() => {
                 if (text) addLine(type, text)
                 if (delay === 4000) {
-                    setIsBooting(false)
                     setShowPrompt(true)
                 }
             }, delay)

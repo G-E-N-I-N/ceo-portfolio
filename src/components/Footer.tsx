@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Terminal, Heart, Github, Linkedin, Mail } from 'lucide-react';
+import { Terminal, Github, Linkedin, Mail } from 'lucide-react';
 
 import { Whatsapp } from './icons/Whatsapp';
 
@@ -79,7 +79,7 @@ const Footer = () => {
                     {/* Terminal-style separator */}
                     <div className="mt-6 pt-4 border-t border-terminal-border">
                         <div className="text-center text-[var(--terminal-text)] text-xs font-mono opacity-60">
-                            <span className="text-[var(--terminal-green)]">$</span> echo "Strong that scary of my power ! 🚀"
+                            <span className="text-[var(--terminal-green)]">$</span> Strong that scary of my power ! 🚀
                         </div>
                     </div>
                 </div>
@@ -88,4 +88,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default Footer;

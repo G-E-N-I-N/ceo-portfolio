@@ -3,7 +3,7 @@
 
 import { useState } from "react"
 import { motion } from 'framer-motion'
-import { Terminal, Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { Terminal, Menu, X, Github, Linkedin } from 'lucide-react'
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
