@@ -77,8 +77,18 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        const user = 'djiokeng2003@gmail.com'
-        const password = 'lfym jmgz ubsd tabm'
+        const user = process.env.EMAIL_USER
+        const password = process.env.EMAIL_PASSWORD
+        if(!user) {
+            return NextResponse.json(
+                { 
+                    success: false, 
+                    message: 'user unavailable' 
+                },
+                { status: 404 }
+            )
+        }
+        console.log({ user, password})
         const transporter = NodeMail.createTransport({
             service: 'gmail',
             auth: {
@@ -128,7 +138,7 @@ export async function POST(request: NextRequest) {
             },
             { status: 200 }
         )
-    } catch(error) {
+    } catch(_error) {
         return NextResponse.json(
             { error: 'Erreur interne du serveur. Veuillez réessayer plus tard.' },
             { status: 500 }
