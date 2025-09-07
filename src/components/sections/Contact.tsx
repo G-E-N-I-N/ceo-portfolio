@@ -103,7 +103,7 @@ const Contact = () => {
                 setSubmitStatus('error')
                 setServerMailResponse(errorData?.error || 'Une erreur inattendue est survenue.')
             }
-        } catch (error: any) {
+        } catch(_error) {
             setSubmitStatus('error')
             setServerMailResponse('Problème de connexion. Veuillez réessayer plus tard.')
         } finally {

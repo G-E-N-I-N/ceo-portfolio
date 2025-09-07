@@ -128,11 +128,10 @@ export async function POST(request: NextRequest) {
             },
             { status: 200 }
         )
-    } catch(error: any) {
-        console.error('Erreur lors de l\'envoi du message:', error)
+    } catch(error) {
         return NextResponse.json(
-            { error: error?.message || 'Erreur interne du serveur' },
-            { status: error?.status || 500 }
+            { error: 'Erreur interne du serveur. Veuillez réessayer plus tard.' },
+            { status: 500 }
         )
     }
 }
