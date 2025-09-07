@@ -85,7 +85,7 @@ const Contact = () => {
         setServerMailResponse('')
 
         try {
-            const response = await fetch('/api/contact', {
+            const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,15 +93,19 @@ const Contact = () => {
                 body: JSON.stringify(formData),
             })
 
-            if (response.ok) {
+            if (res.ok) {
+                const responseData = await res.json()
                 setSubmitStatus('success')
-                console.log(response.message)
+                setServerMailResponse(responseData?.message)
                 setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
             } else {
+                const errorData = await res.json()
                 setSubmitStatus('error')
+                setServerMailResponse(errorData?.error || 'Une erreur inattendue est survenue.')
             }
-        } catch (error) {
+        } catch (error: any) {
             setSubmitStatus('error')
+            setServerMailResponse('Problème de connexion. Veuillez réessayer plus tard.')
         } finally {
             setIsSubmitting(false)
             setTimeout(() => setSubmitStatus('idle'), 5000)
@@ -253,7 +257,8 @@ const Contact = () => {
                                             className="p-4 bg-[var(--terminal-red)]/20 border border-[var(--terminal-red)]/30 rounded-lg"
                                         >
                                             <div className="text-[var(--terminal-red)] font-mono text-sm">
-                                                ✗ Erreur lors de l&aposenvoi. Veuillez réessayer ou me contacter directement.
+                                                { serverMailResponse }<br />
+                                                <br /> ✗ Erreur lors de l&aposenvoi. Veuillez réessayer ou me contacter directement.
                                             </div>
                                         </motion.div>
                                     )}
