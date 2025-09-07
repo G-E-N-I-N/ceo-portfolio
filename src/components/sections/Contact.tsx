@@ -13,11 +13,13 @@ const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        phone: '',
         subject: '',
         message: ''
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+    const [serverMailResponse, setServerMailResponse] = useState<string | null>(null)
 
     const contacts = [
         {
@@ -77,10 +79,33 @@ const Contact = () => {
             [name]: value
         }))
     }
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        setSubmitStatus('idle')
         setIsSubmitting(true)
+        setServerMailResponse('')
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+
+            if (response.ok) {
+                setSubmitStatus('success')
+                console.log(response.message)
+                setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+            } else {
+                setSubmitStatus('error')
+            }
+        } catch (error) {
+            setSubmitStatus('error')
+        } finally {
+            setIsSubmitting(false)
+            setTimeout(() => setSubmitStatus('idle'), 5000)
+        }
     }
 
     return (
@@ -103,7 +128,7 @@ const Contact = () => {
                         </motion.div>
 
                         <p className="text-xl text-[var(--terminal-text)] max-w-3xl mx-auto leading-relaxed">
-                            Vous avez un projet en tête ? Discutons ensemble de vos besoins et créons quelque chose d&apos;exceptionnel.
+                            Vous avez un projet en tête ? Discutons ensemble de vos besoins et créons quelque chose d&aposexceptionnel.
                         </p>
                     </div>
                 </SectionReveal>
@@ -167,6 +192,20 @@ const Contact = () => {
 
                                     <div>
                                         <label className="block text-[var(--terminal-cyan)] text-sm font-mono mb-2">
+                                            Téléphone
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
+                                            className="w-full px-4 py-3 bg-[var(--terminal-bg)] border border-[var(--terminal-border)] rounded-lg text-[var(--terminal-text)] font-mono focus:border-[var(--terminal-cyan)] focus:outline-none transition-colors duration-300"
+                                            placeholder="+237 xxxxxxxx"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-[var(--terminal-cyan)] text-sm font-mono mb-2">
                                             Sujet
                                         </label>
                                         <input
@@ -214,7 +253,7 @@ const Contact = () => {
                                             className="p-4 bg-[var(--terminal-red)]/20 border border-[var(--terminal-red)]/30 rounded-lg"
                                         >
                                             <div className="text-[var(--terminal-red)] font-mono text-sm">
-                                                ✗ Erreur lors de l&apos;envoi. Veuillez réessayer ou me contacter directement.
+                                                ✗ Erreur lors de l&aposenvoi. Veuillez réessayer ou me contacter directement.
                                             </div>
                                         </motion.div>
                                     )}
@@ -321,7 +360,7 @@ const Contact = () => {
 
                                     <StaggerContainer className="space-y-4">
                                         {socials.map((link) => {
-                                            const IconComponent = link.icon;
+                                            const IconComponent = link.icon
                                         
                                             return (
                                                 <StaggerItem key={link.name}>
@@ -352,7 +391,7 @@ const Contact = () => {
                                                         </div>
                                                     </motion.a>
                                                 </StaggerItem>
-                                            );
+                                            )
                                         })}
                                     </StaggerContainer>
                                 </div>
@@ -390,7 +429,7 @@ const Contact = () => {
                             
                                 <p className="text-[var(--terminal-text)]">
                                     Je suis actuellement ouvert aux opportunités freelance et aux collaborations. 
-                                    N&apos;hésitez pas à me contacter pour discuter de votre projet !
+                                    N&aposhésitez pas à me contacter pour discuter de votre projet !
                                 </p>
                             </div>
                         </div>
