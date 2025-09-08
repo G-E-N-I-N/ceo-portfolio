@@ -1,16 +1,20 @@
 
 'use client'
 
-import { motion } from 'framer-motion';
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 
-import AnimatedText from '../ui/AnimatedText';
-import Terminal from '../ui/Terminal';
+import AnimatedText from '../ui/AnimatedText'
+import Terminal from '../ui/Terminal'
+import Win11Dialog from '../ui/Win11Dialog'
 
 const Hero = () => {
+    const [showMore, setShowMore] = useState(false)
+
     const scrollToNext = () => {
-        const element = document.getElementById('services');
+        const element = document.getElementById('services')
         if (element) {
-           element.scrollIntoView({ behavior: 'smooth' });
+           element.scrollIntoView({ behavior: 'smooth' })
         }
     }
 
@@ -64,7 +68,7 @@ const Hero = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.8 }}
-                                className="text-xl md:text-2xl text-terminal-text font-mono"
+                                className="text-xl md:text-2xl h-9 text-terminal-text font-mono"
                             >
                                 <AnimatedText 
                                     text="Développeur de Solutions Logicielles"
@@ -80,22 +84,34 @@ const Hero = () => {
                             className="space-y-4"
                         >
                             <p className="text-lg text-[var(--terminal-text)] leading-relaxed">
-                                Passionné par la création d&apos;expériences numériques, je conçois et développe 
+                                Passionné par la création d&aposexpériences numériques, je conçois et développe 
                                 en <span className="text-[var(--terminal-green)] font-semibold">freelance</span> des
-                                applications web et mobiles robustes, de l&apos;idée initiale à la mise en production.
+                                applications web et mobiles robustes, de l&aposidée initiale à la mise en production.
                             </p>
 
                             <div className="flex flex-wrap gap-3">
                                 {['C/C++', 'Python', 'JavaScript', 'Java', '+'].map((tech, index) => (
-                                    <motion.span
-                                        key={tech}
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.3, delay: 2 + index * 0.1 }}
-                                        className="px-3 py-1 bg-[var(--terminal-border)]/30 text-[var(--terminal-cyan)] text-sm rounded-md border border-[var(--terminal-cyan)]/30"
-                                    >
-                                        {tech}
-                                    </motion.span>
+                                    tech !== '+' ? (
+                                        <motion.span
+                                            key={tech}
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.3, delay: 2 + index * 0.1 }}
+                                            className="px-3 py-1 bg-[var(--terminal-border)]/30 text-[var(--terminal-cyan)] text-sm rounded-md border border-[var(--terminal-cyan)]/30"
+                                        >
+                                            {tech}
+                                        </motion.span>
+                                    ) : (
+                                        <motion.button
+                                            key={tech}
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            onClick={() => setShowMore(true)}
+                                            className="px-3 py-1 bg-[var(--terminal-border)]/30 hover:bg-[var(--terminal-green)] text-[var(--terminal-cyan)] hover:text-[var(--terminal-bg)] text-sm rounded-md border border-[var(--terminal-cyan)]/30 transition-colors duration-300"
+                                        >
+                                            {tech}
+                                        </motion.button>
+                                    )
                                 ))}
                             </div>
                         </motion.div>
@@ -139,7 +155,7 @@ const Hero = () => {
                             className="mt-4"
                         >
                             <p className="text-[var(--terminal-text)] text-sm text-center">
-                                💡 <span className="text-[var(--terminal-yellow)]">Astuce:</span> Tapez &quot;help&quot; dans le terminal pour découvrir les commandes
+                                💡 <span className="text-[var(--terminal-yellow)]">Astuce:</span> Tapez &quothelp&quot dans le terminal pour découvrir les commandes
                             </p>
 
                             <Terminal />
@@ -173,31 +189,7 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-            {/* Photo de profil en arrière-plan */}
-            {/* <div className="absolute right-0 bottom-0 z-0 hidden lg:block">
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1, duration: 0.8 }}
-                    className="relative"
-                >
-                    <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-[var(--terminal-cyan)] shadow-2xl">
-                        <img
-                            src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt="l0rd_9h057"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.5, duration: 0.6 }}
-                        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[var(--terminal-bg)] border border-[var(--terminal-cyan)] rounded-lg px-4 py-2"
-                    >
-                        <span className="text-[var(--terminal-green)] font-mono text-lg">@l0rd_9h057</span>
-                    </motion.div>
-                </motion.div>
-            </div> */}
+            <Win11Dialog open={showMore} onClose={() => setShowMore(false)} />
         </section>
     )
 }

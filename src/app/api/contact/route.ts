@@ -138,7 +138,8 @@ export async function POST(request: NextRequest) {
             },
             { status: 200 }
         )
-    } catch(_error) {
+    } catch(error) {
+        console.error(error)
         return NextResponse.json(
             { error: 'Erreur interne du serveur. Veuillez réessayer plus tard.' },
             { status: 500 }
