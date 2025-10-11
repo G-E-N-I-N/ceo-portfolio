@@ -365,7 +365,7 @@ const ProjectsSection = () => {
                             </div>
 
                             <span className='flex items-center justify-center space-x-4 text-[var(--terminal-red)]'>
-                                <Warning /> En cours de développement. Mais disponible sur -->
+                                <Warning /> En cours de développement. Mais disponible sur github via 
                                 <motion.a
                                     whileHover={{ scale: 1.1, rotate: 5 }}
                                     href="https://github.com/G-E-N-I-N"
