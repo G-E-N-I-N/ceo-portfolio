@@ -3,7 +3,7 @@
 
 // import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { BookOpen } from 'lucide-react'
+import { BookOpen, Github  } from 'lucide-react'
 
 import SectionReveal from '../ui/SectionReveal'
 // import PageFlipScrollSection from '../ui/PageFlipScrollSection'
@@ -372,7 +372,9 @@ const ProjectsSection = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-[var(--terminal-text)] hover:text-[var(--terminal-text)] transition-colors duration-300"
-                                ></motion.a>
+                                >
+                                    <Github className="w-5 h-5" />
+                                </motion.a>
                             </span>
                         </div>
                     </SectionReveal>
