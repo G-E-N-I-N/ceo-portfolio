@@ -364,7 +364,16 @@ const ProjectsSection = () => {
                                 <span>Faites défiler pour tourner les pages de mon portfolio</span>
                             </div>
 
-                            <span className='flex items-center justify-center space-x-4 text-[var(--terminal-red)]'> <Warning /> En cours de développement </span>
+                            <span className='flex items-center justify-center space-x-4 text-[var(--terminal-red)]'>
+                                <Warning /> En cours de développement. Mais disponible sur -->
+                                <motion.a
+                                    whileHover={{ scale: 1.1, rotate: 5 }}
+                                    href="https://github.com/G-E-N-I-N"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[var(--terminal-text)] hover:text-[var(--terminal-text)] transition-colors duration-300"
+                                ></motion.a>
+                            </span>
                         </div>
                     </SectionReveal>
                 </div>
